@@ -40,8 +40,8 @@
 #include <string.h>
 #include <unistd.h>
 
-#define PHASESEL "phase_sel.txt"
-#define CATALOGSEL "catalog_sel.txt"
+//#define PHASESEL "phase_sel.txt"
+//#define CATALOGSEL "catalog_sel.txt"
 #define RESOLUTION "resolution.txt"
 
 //#define MAXTIME 86400.00 //one day
@@ -169,7 +169,8 @@ int ispeed = 1;  // default setting ispeed = 1
 int main(int argc, char **argv) {
   int i, j, k, l, m, n;
   FILE *fp, *fpr, *fp1, *fp2;
-  char output1[256], output2[256], dir[256], input[256];
+//  char output1[256], output2[256], dir[256], input[256];
+  char output1[1024], output2[1024], dir[1024], input[1024], infile[1024];
   int test, error, pcount, scount, psboth, puse, nnn, ps, nselect;
   double dx, dh, rx, rh, dx1, dx2, rx1, rx2;
   double tp0_cal, ts0_cal, tp_cal, ts_cal, tp_pre, ts_pre, tp_pre_b, ts_pre_b,
@@ -654,8 +655,12 @@ int main(int argc, char **argv) {
     }
   }
 
-  fp1 = fopen(CATALOGSEL, "w");
-  fp2 = fopen(PHASESEL, "w");
+//  fp1 = fopen(CATALOGSEL, "w");
+//  fp2 = fopen(PHASESEL, "w");
+  strcpy(infile, argv[9]);
+  fp1 = fopen(infile, "w");
+  strcpy(infile, argv[10]);
+  fp2 = fopen(infile, "w");
   /*Reselect to keep the most reliable event within a time window*/
   nselect = ReselectFinal(RELC, mmm);
   fprintf(stderr, "before first selection: %d\n after first selection: %d\n",

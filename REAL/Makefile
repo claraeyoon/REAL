@@ -1,17 +1,18 @@
 #MAC openMP
-CC = gcc-9 -Os -fopenmp -W 
+#CC = gcc-9 -Os -fopenmp -W 
 
 #Linux openMP
 #CC = gcc -Os  -fopenmp -W 
 
 #Serial
-#CC = gcc -Os -W 
+CC = gcc -Os -W 
 
 LIBS = -lm 
 
 all: REAL clean
 
-BIN = ~/bin
+#BIN = ~/bin
+BIN = .
 
 REAL:REAL.o
 	$(CC) -o $(BIN)/$@ $^ $(LIBS)
